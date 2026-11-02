@@ -7,7 +7,6 @@ metadata:
   namespace: default
 spec:
   progressDeadlineSeconds: 600
-  replicas: 3
   revisionHistoryLimit: 10
   selector:
     matchLabels:
@@ -26,6 +25,9 @@ spec:
         - image: docker.io/bootdotdev/synergychat-web:latest
           imagePullPolicy: Always
           name: synergychat-web
+          resources:
+            limits:
+              cpu: 50m
           env:
             - name: API_URL
               valueFrom:
